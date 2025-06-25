@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BioDiesel Dashboard</title>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://fonts.google.com/selection" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div class="bg-white" style="min-width: 250px; min-height: 100vh;">
+      <!--  Logo + Text -->
+      <div class="logo d-flex align-items-center mb-4">
+        <img src="./icons/Group.png" width="30" height="30" class="me-2" />
+        <span class="fw-bold fs-5">BioDiesel</span>
+      </div>
+      <ul class="nav-list">
+        <li class="nav-item selected mb-2 d-flex align-items-center">
+          <img src="./icons/Vector.png" width="20" height="20" class="me-2" />
+          <a href="#" class="nav-link  p-0">Dashboard</a>
+        </li>
+        <li class="nav-item mb-2 d-flex align-items-center">
+          <img src="./icons/Glyph.png" width="20" height="20" class="me-2" />
+          <a href="#" class="nav-link p-0">Transactions</a>
+        </li>
+        <li class="nav-item mb-2 d-flex align-items-center">
+          <img src="./icons/user 3 1.png" width="20" height="20" class="me-2" />
+          <a href="#" class="nav-link  p-0">Clients</a>
+        <li class="nav-item mb-3 d-flex align-items-center">
+          <img src="./icons/Layer 1 1.png" width="20" height="20" class="me-2" />
+          <a href="#" class="nav-link  p-0">Investments</a>
+        </li>
+        <li class="nav-item mb-3 d-flex align-items-center">
+          <img src="./icons/Group(1).png" width="20" height="20" class="me-2" />
+          <a href="#" class="nav-link  p-0">Credit Cards</a>
+        </li>
+        <li class="nav-item mb-3 d-flex align-items-center">
+          <img src="./icons/Group(2).png" width="20" height="20" class="me-2" />
+          <a href="#" class="nav-link  p-0">Loans</a>
+        </li>
+        <li class="nav-item mb-3 d-flex align-items-center">
+          <img src="./icons/service 1.png" width="20" height="20" class="me-2" />
+          <a href="#" class="nav-link  p-0">Services</a>
+        </li>
+        <li class="nav-item mb-3 d-flex align-items-center">
+          <img src="./icons/Group(3).png" width="20" height="20" class="me-2" />
+          <a href="#" class="nav-link  p-0">Privileges</a>
+        </li>
+        <li class="nav-item mb-3 d-flex align-items-center">
+          <img src="./icons/settings solid 1.png " width="20" height="20" class="me-2" />
+          <a href="#" class="nav-link  p-0">Settings</a>
+        </li>
+      </ul>
+    </div>
+
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Top Bar -->
+      <div class="top-bar">
+        <h2 class="title">Overview</h2>
+
+        <div class="left-side">
+
+          <div class="d-flex align-items-center gap-3">
+            <!-- TopBar -->
+            <!-- Search Box -->
+            <div class="position-relative search-container me-3">
+              <img src="./icons/magnifying-glass 1.png" class="search-icon-inside" width="18" height="18">
+              <input type="text" class="form-control search-input ps-5" placeholder="Search for something">
+            </div>
+
+            <!-- Icons  -->
+            <div class="d-flex align-items-center gap-2">
+              <!-- جرس -->
+              <div class="icon-wrapper bg-light-blue">
+                <img src="./icons/002-notification-1.png" width="16" height="16" />
+              </div>
+
+              <!-- ترس -->
+              <div class="icon-wrapper bg-light-blue">
+                <img src="./icons/settings 1.png" width="16" height="16" />
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right: Profile Dropdown -->
+          <div class="dropdown">
+            <img src="./img/profiles/Ellipse 10.png" class="user-img dropdown-toggle" data-bs-toggle="dropdown"
+              style="cursor: pointer; width: 35px; height: 35px; border-radius: 50%;" />
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#"><i class="fas fa-user-edit me-2"></i> Edit Profile</a></li>
+              <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <!-- </div> -->
+      <!-- Row 1: Weekly Activity + Pie Chart -->
+      <div class="row">
+        <div class="col-str col-md-7 mb-4">
+          <h5 class="section-title"><i class="fas fa-chart-bar me-2"></i> Weekly Activity</h5>
+          <div class="card p-3">
+            <canvas id="weeklyChart"></canvas>
+          </div>
+        </div>
+        <div class="col-str col-md-4 mb-4">
+          <h5 class="section-title"><i class="fas fa-chart-pie me-2"></i> Expense Statistics</h5>
+          <div class="card p-3">
+            <div style="width: 70%; height: 400px; display: flex; justify-content: center; align-items: center; margin: auto;">
+              <canvas id="pieChart" height="200"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Quick Transfer + Balance -->
+      <div class="row">
+        <div class="col-str col-md-3 mb-4 me-2">
+          <h5 class="section-title"><i class="fas fa-paper-plane me-2"></i> Quick Transfer</h5>
+          <div class="card" style="width: fit-content; padding: 1rem 2rem 1rem 1rem !important; ">
+            <div class="transfer-contacts">
+              <div class="transfer-contact">
+                <img src="./img/profiles/Ellipse 10.png" class="user-img" />
+                <span class="name">Livia Bator</span>
+                <span class="position">CEO</span>
+              </div>
+              <div class="transfer-contact">
+                <img src="./img/profiles/marcel-strauss-Uc_tOqa_jDY-unsplash 1.png" class="user-img" />
+                <span class="name">Randy Bres</span>
+                <span class="position">Director</span>
+              </div>
+              <div class="transfer-contact">
+                <img src="./img/profiles/Mask Group.png" class="user-img" />
+                <span class="name">Workman</span>
+                <span class="position">Designer</span>
+              </div>
+            </div>
+            <form class="transaction">
+              <span>Write Amount</span>
+              <div class="main-thing">
+                <input type="text" class="form-control" value="255.50">
+                <button class="btn btn-success"><i class="fas fa-paper-plane"></i> Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-str col-md-8 mb-4">
+          <h5 class="section-title"><i class="fas fa-chart-line me-2"></i> Balance History</h5>
+          <div class="card p-3">
+            <!-- <canvas id="lineChart" width="400px" height="300px"></canvas> -->
+            <!-- <div style="width: 300px;"> -->
+              <canvas id="lineChart" height="200"></canvas>
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js logic -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
